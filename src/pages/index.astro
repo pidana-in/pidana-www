@@ -1,43 +1,14 @@
 ---
 import '@/styles/globals.css'
-import Footer from '@/components/Footer.astro'
+import Layout from '@/layouts/Layout.astro';
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Building2, ShieldCheck, Cpu, Handshake, Briefcase, Mail, Github, Linkedin, Twitter } from 'lucide-react'
+import { ShieldCheck, Cpu, Mail } from 'lucide-react'
 ---
 
-<div class="flex flex-col min-h-screen">
-  <header class="px-4 lg:px-6 h-16 flex items-center border-b">
-    <a class="flex items-center justify-center" href="/">
-      <Building2 className="h-6 w-6 mr-2" />
-      <span class="font-bold">PIDANA Technologies</span>
-    </a>
-    <nav class="ml-auto flex gap-4 sm:gap-6">
-      <a class="text-sm font-medium hover:underline underline-offset-4" href="#home">
-        Home
-      </a>
-      <a class="text-sm font-medium hover:underline underline-offset-4" href="#about">
-        About Us
-      </a>
-      <a class="text-sm font-medium hover:underline underline-offset-4" href="#solutions">
-        Solutions
-      </a>
-      <a class="text-sm font-medium hover:underline underline-offset-4" href="#technologies">
-        Technologies
-      </a>
-      <a class="text-sm font-medium hover:underline underline-offset-4" href="#partners">
-        Partners
-      </a>
-      <a class="text-sm font-medium hover:underline underline-offset-4" href="#careers">
-        Careers
-      </a>
-      <a class="text-sm font-medium hover:underline underline-offset-4" href="#contact">
-        Contact Us
-      </a>
-    </nav>
-  </header>
+<Layout title="Home - PIDANA Technologies" description="Welcome to PIDANA Technologies" keywords="technology, safety, innovation">
   <main class="flex-1">
     <section id="home" class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black text-white">
       <div class="container mx-auto px-4 md:px-6">
@@ -46,7 +17,7 @@ import { Building2, ShieldCheck, Cpu, Handshake, Briefcase, Mail, Github, Linked
             <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
               Innovating Technology for a Safer Tomorrow
             </h1>
-            <p class="mx-auto max-w-[700px] text-gray-300 md:text-xl">
+            <p class="mx-auto max-w-[900px] text-gray-300 md:text-xl">
               Empowering safety and healthcare solutions with advanced technology and compassionate care.
             </p>
           </div>
@@ -88,7 +59,7 @@ import { Building2, ShieldCheck, Cpu, Handshake, Briefcase, Mail, Github, Linked
     <section id="about" class="w-full py-12 md:py-24 lg:py-32">
       <div class="container mx-auto px-4 md:px-6">
         <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-8">About Us</h2>
-        <p class="mx-auto max-w-[700px] text-gray-700 md:text-xl text-center mb-12">
+        <p class="mx-auto max-w-[900px] text-gray-700 md:text-xl text-center mb-12">
           PIDANA Technologies is committed to innovating for a safer world. Our mission is to develop cutting-edge
           technologies that enhance safety and improve healthcare outcomes. We are driven by our core values of
           Integrity, Innovation, and Quality.
@@ -186,7 +157,7 @@ import { Building2, ShieldCheck, Cpu, Handshake, Briefcase, Mail, Github, Linked
         </div>
       </div>
     </section>
-    <section id="partners" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+    <!-- <section id="partners" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
       <div class="container mx-auto px-4 md:px-6">
         <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-8">Our Partners</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
@@ -236,29 +207,29 @@ import { Building2, ShieldCheck, Cpu, Handshake, Briefcase, Mail, Github, Linked
           <Button variant="outline">View All Openings</Button>
         </div>
       </div>
-    </section>
+    </section> -->
     <section id="contact" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
       <div class="container mx-auto px-4 md:px-6">
         <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-8">Contact Us</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 class="text-2xl font-bold mb-4">Get in Touch</h3>
-            <p class="mb-2">
+            <!-- <p class="mb-2">
               <Mail className="inline mr-2" />
               info@pidana.com
-            </p>
+            </p> -->
             <p class="mb-2">
               <Mail className="inline mr-2" />
               support@pidana.com
             </p>
-            <p class="mb-2">
+            <!-- <p class="mb-2">
               <Mail className="inline mr-2" />
               careers@pidana.com
-            </p>
+            </p> -->
             <p class="mb-4">123 Tech Street, Innovation City, 12345</p>
             <p>Phone: +1 (123) 456-7890</p>
           </div>
-          <div>
+          <!-- <div>
             <h3 class="text-2xl font-bold mb-4">Send Us a Message</h3>
             <form class="space-y-4">
               <Input placeholder="Your Name" />
@@ -266,10 +237,10 @@ import { Building2, ShieldCheck, Cpu, Handshake, Briefcase, Mail, Github, Linked
               <Textarea placeholder="Your Message" />
               <Button type="submit">Send Message</Button>
             </form>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
   </main>
-  <Footer />
-</div>
+  
+</Layout>
