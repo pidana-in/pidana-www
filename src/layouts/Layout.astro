@@ -1,5 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+
 import '@/styles/globals.css'
+import logoImg from '@/images/logo.svg';
 import Footer from '@/components/Footer.astro';
 interface Props {
 	title: string;
@@ -23,7 +26,7 @@ const { title = 'Default Title', description = '', keywords = '' } = Astro.props
   <body>
     <header class="px-4 lg:px-6 h-16 flex items-center border-b relative">
       <a class="flex items-center justify-center" href="/">
-        <img src="/favicon.svg" alt="Logo" class="h-8 w-auto mr-2" />
+        <Image src={logoImg} alt="Logo" class="h-8 w-auto mr-2" height={32} width={32} />
         <span class="font-bold">PIDANA Technologies</span>
       </a>
     
