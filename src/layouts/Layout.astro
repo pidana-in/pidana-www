@@ -22,31 +22,34 @@ const { title = 'Default Title', description = '', keywords = '' } = Astro.props
     <title>{title}</title>
   </head>
   <body>
-    <header class="px-4 lg:px-6 h-16 flex items-center border-b">
+    <header class="px-4 lg:px-6 h-16 flex items-center border-b relative">
       <a class="flex items-center justify-center" href="/">
         <Building2 className="h-6 w-6 mr-2" />
         <span class="font-bold">PIDANA Technologies</span>
       </a>
-      <nav class="ml-auto flex gap-4 sm:gap-6">
-        <a class="text-sm font-medium hover:underline underline-offset-4" href="/#home">
+    
+      <!-- Hamburger Menu for Mobile -->
+      <button id="mobile-menu-button" class="ml-auto block lg:hidden focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    
+      <!-- Navigation Links -->
+      <nav id="nav-links" class="hidden lg:flex ml-auto flex-col lg:flex-row gap-4 sm:gap-6 absolute lg:relative top-16 left-0 w-full lg:w-auto lg:top-auto bg-white lg:bg-transparent border-t lg:border-none lg:p-0 p-4">
+        <a class="block text-sm font-medium hover:underline underline-offset-4 py-2" href="/#home">
           Home
         </a>
-        <a class="text-sm font-medium hover:underline underline-offset-4" href="/#about">
+        <a class="block text-sm font-medium hover:underline underline-offset-4 py-2" href="/#about">
           About Us
         </a>
-        <a class="text-sm font-medium hover:underline underline-offset-4" href="/#solutions">
+        <a class="block text-sm font-medium hover:underline underline-offset-4 py-2" href="/#solutions">
           Solutions
         </a>
-        <a class="text-sm font-medium hover:underline underline-offset-4" href="/#technologies">
+        <a class="block text-sm font-medium hover:underline underline-offset-4 py-2" href="/#technologies">
           Technologies
         </a>
-        <!-- <a class="text-sm font-medium hover:underline underline-offset-4" href="/#partners">
-          Partners
-        </a>
-        <a class="text-sm font-medium hover:underline underline-offset-4" href="/#careers">
-          Careers
-        </a> -->
-        <a class="text-sm font-medium hover:underline underline-offset-4" href="/#contact">
+        <a class="block text-sm font-medium hover:underline underline-offset-4 py-2" href="/#contact">
           Contact Us
         </a>
       </nav>
@@ -56,6 +59,54 @@ const { title = 'Default Title', description = '', keywords = '' } = Astro.props
       <slot />
     </div>
 
+    <button id="top-button" class="hidden fixed bottom-8 right-8 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg focus:outline-none hover:bg-blue-700">
+      ▲ Top
+    </button>
+
     <Footer />
+
+
+    <script>
+      // Get the button element
+      const topButton = document.getElementById('top-button');
+
+      // Show the button when the user scrolls down 100px
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          topButton?.classList.remove('hidden');
+          topButton?.classList.add('block');
+        } else {
+          topButton?.classList.remove('block');
+          topButton?.classList.add('hidden');
+        }
+      });
+
+      // Scroll back to the top when the button is clicked
+      topButton?.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth' // Smooth scroll to top
+        });
+      });
+
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const navLinks = document.getElementById('nav-links');
+      const navLinksItems = navLinks?.querySelectorAll('a');
+    
+      mobileMenuButton?.addEventListener('click', () => {
+        navLinks?.classList.toggle('hidden');
+      });
+
+      // Hide navigation when a nav link is clicked, but only for mobile view
+      navLinksItems?.forEach(link => {
+        link.addEventListener('click', () => {
+          // Check if the window width is less than 1024px (mobile view)
+          if (window.innerWidth < 1024) {
+            navLinks?.classList.add('hidden'); // Hide the navigation for mobile
+          }
+        });
+      });
+
+    </script>
   </body>
 </html>
