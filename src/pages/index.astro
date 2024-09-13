@@ -3,14 +3,39 @@ import '@/styles/globals.css'
 import Layout from '@/layouts/Layout.astro';
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { ShieldCheck, Cpu, Mail } from 'lucide-react'
+import { ShieldCheck, Cpu } from 'lucide-react'
+
+const founders = [
+  {
+    name: 'Ajay Sharma',
+    bio: 'Alum of IIT Varanasi,  IIMA, serial entrepreneur and investor',
+  },
+  {
+    name: 'Abhinav Kushwaha',
+    bio: 'Alum of IIT Varanasi, entrepreneur, ex-Flipkart, ex-PhonePe',
+  },
+  {
+    name: 'Gaurav Kumar',
+    bio: 'Alum of IIT Varanasi, entrepreneur, ex-Nomura, Inquisitive learner',
+  },
+  {
+    name: 'Vaibhav Saxena',
+    bio: 'Alum of IIT Varanasi, entrepreneur, coined #Solving4bharat',
+  },
+];
 ---
 
 <Layout title="Home - PIDANA Technologies" description="Welcome to PIDANA Technologies" keywords="technology, safety, innovation">
   <main class="flex-1">
-    <section id="home" class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black text-white">
+    <section id="home" class="relative w-full h-screen bg-cover bg-center" style="background-image: url('https://framerusercontent.com/images/mpY4eL9JgUTWHaLCEc8LOzuNvQ.jpg');">
+      <div class="flex flex-col items-center justify-center h-full bg-black bg-opacity-50 p-4">
+        <h1 class="text-white text-6xl font-bold mb-4">Innovating Technology for a Safer Tomorrow</h1>
+        <p class="text-white text-2xl">Empowering safety and healthcare solutions with advanced technology and compassionate care.</p>
+        <Button asChild>
+          <a href="#about" class="bg-gray-900 text-white hover:bg-black py-4 px-8 mt-4 rounded-full">Learn More</a>
+        </Button>
+      </div>
+<!--       
       <div class="container mx-auto px-4 md:px-6">
         <div class="flex flex-col items-center space-y-4 text-center">
           <div class="space-y-2">
@@ -21,11 +46,9 @@ import { ShieldCheck, Cpu, Mail } from 'lucide-react'
               Empowering safety and healthcare solutions with advanced technology and compassionate care.
             </p>
           </div>
-          <Button className="bg-white text-black hover:bg-gray-200" asChild>
-            <a href="#about">Learn More</a>
-          </Button>
+          
         </div>
-      </div>
+      </div> -->
     </section>
     <section class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
       <div class="container mx-auto px-4 md:px-6">
@@ -65,14 +88,14 @@ import { ShieldCheck, Cpu, Mail } from 'lucide-react'
           Integrity, Innovation, and Quality.
         </p>
         <h3 class="text-2xl font-bold mb-4">Our Leadership</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {['Founder 1', 'Founder 2', 'Founder 3'].map((founder, index) => (
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {founders.map((founder, index) => (
             <Card key={index}>
               <CardHeader>
-                <CardTitle>{founder}</CardTitle>
+                <CardTitle>{founder.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                Brief bio of the founder and their role in PIDANA Technologies.
+                {founder.bio}
               </CardContent>
             </Card>
           ))}
