@@ -23,12 +23,12 @@ const { title = 'Default Title', description = '', keywords = '' } = Astro.props
   <body>
     <header class="px-4 lg:px-6 h-16 flex items-center border-b relative">
       <a class="flex items-center justify-center" href="/">
-        <img src="/favicon.svg" alt="PIDANA Technologies" class="h-8 w-auto mr-2" />
+        <img src="/favicon.svg" alt="Logo" class="h-8 w-auto mr-2" />
         <span class="font-bold">PIDANA Technologies</span>
       </a>
     
       <!-- Hamburger Menu for Mobile -->
-      <button id="mobile-menu-button" class="ml-auto block lg:hidden focus:outline-none">
+      <button id="mobile-menu-button" aria-label="Open Navigation Menu" class="ml-auto block lg:hidden focus:outline-none" aria-expanded="false">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
@@ -94,6 +94,9 @@ const { title = 'Default Title', description = '', keywords = '' } = Astro.props
     
       mobileMenuButton?.addEventListener('click', () => {
         navLinks?.classList.toggle('hidden');
+        // Toggle the aria-expanded attribute
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+        mobileMenuButton.setAttribute('aria-expanded', "" + !isExpanded);
       });
 
       // Hide navigation when a nav link is clicked, but only for mobile view
@@ -102,6 +105,7 @@ const { title = 'Default Title', description = '', keywords = '' } = Astro.props
           // Check if the window width is less than 1024px (mobile view)
           if (window.innerWidth < 1024) {
             navLinks?.classList.add('hidden'); // Hide the navigation for mobile
+            mobileMenuButton?.setAttribute('aria-expanded', 'false'); // Reset aria-expanded to false
           }
         });
       });
