@@ -4,6 +4,11 @@ import Layout from '@/layouts/Layout.astro';
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ShieldCheck, Cpu } from 'lucide-react'
+import heroImage from '@/images/hero-image.jpg'
+import { getImage } from 'astro:assets';
+
+const optimizedBackground = await getImage({src: heroImage, format: 'webp', quality: 75, height: 1080, width: 1920});
+
 
 const founders = [
   {
@@ -27,12 +32,12 @@ const founders = [
 
 <Layout title="Home - PIDANA Technologies" description="Welcome to PIDANA Technologies" keywords="technology, safety, innovation">
   <main class="flex-1">
-    <section id="home" class="relative w-full h-screen bg-cover bg-center" style="background-image: url('https://framerusercontent.com/images/mpY4eL9JgUTWHaLCEc8LOzuNvQ.jpg');">
+    <section id="home" class="relative w-full h-screen bg-cover bg-center" style={{backgroundImage: `url('${optimizedBackground.src}');`}}>
       <div class="flex flex-col items-center justify-center h-full bg-black bg-opacity-50 p-4">
         <h1 class="text-white text-6xl font-bold mb-4">Innovating Technology for a Safer Tomorrow</h1>
         <p class="text-white text-2xl">Empowering safety and healthcare solutions with advanced technology and compassionate care.</p>
         <Button asChild>
-          <a href="#about" class="bg-gray-900 text-white hover:bg-black py-4 px-8 mt-4 rounded-full">Learn More</a>
+          <a href="#about" class="bg-red-600 text-white hover:bg-red-700 py-4 px-8 mt-4 rounded-full">Learn More</a>
         </Button>
       </div>
 <!--       
