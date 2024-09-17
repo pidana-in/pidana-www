@@ -7,6 +7,10 @@ import tailwind from "@astrojs/tailwind"
 
 // https://astro.build/config
 export default defineConfig({
+  compressHTML: true,
+  build: {
+    inlineStylesheets: "always",
+  },
   image: {
     domains: ["neon.ipsator.com"],
   },
@@ -16,4 +20,9 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
+  vite: {
+    build: {
+      assetsInlineLimit: 1024,
+    },
+  },
 })
